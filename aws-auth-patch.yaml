@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: aws-auth
+  namespace: kube-system
+data:
+  mapRoles: |
+    - rolearn: arn:aws:iam::221082216149:role/bootcamp-cluster-20250207134207862000000002
+      username: admin
+      groups:
+        - system:masters
+    - rolearn: arn:aws:iam::221082216149:role/eks-admin
+      username: system:node:ip-10-0-1-49.eu-north-1.compute.internal
+      groups:
+        - system:bootcamp
+  mapUsers: |
+    - userarn: arn:aws:iam::221082216149:user/MurathanErgin
+      username: admin
+      groups:
+        - system:masters
