@@ -1,2 +1,2 @@
 ﻿# Bootcamp-Final-Exam
-AWS toekn and secret has been assigned as github secret variable.
+AWS token and secret have been assigned as GitHub secret variables.
