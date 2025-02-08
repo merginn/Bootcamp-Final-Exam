@@ -76,11 +76,11 @@ Modify the `aws-auth` ConfigMap to allow IAM user access:
 `kubectl edit configmap aws-auth -n kube-system`
 
 Add the following entry under `mapUsers`:
-`mapUsers: |
+mapUsers: |
   - userarn: arn:aws:iam::ACCOUNT_ID:user/MurathanErgin
     username: MurathanErgin
     groups:
-      - system:masters`
+      - system:masters
 
 ### Step 11: Validate IAM User Access
 Run the following command to ensure the IAM user has access:
