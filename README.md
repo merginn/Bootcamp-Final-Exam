@@ -43,8 +43,6 @@ This project sets up an AWS EKS cluster using Terraform, with integration of Kub
    - EKS cluster endpoint
 
 ## Deployment Steps
-
-### Step 1: Clone the Repository
 ```sh
 git clone (https://github.com/merginn/Bootcamp-Final-Exam/)
 
