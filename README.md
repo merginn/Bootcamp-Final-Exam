@@ -46,45 +46,45 @@ This project sets up an AWS EKS cluster using Terraform, with integration of Kub
 git clone (https://github.com/merginn/Bootcamp-Final-Exam/)
 
 ### Step 2: Initialize Terraform
-terraform init
+`shterraform init`
 
 ### Step 3: Plan the Deployment
-terraform plan
+`terraform plan`
 
 ### Step 4: Apply the Deployment
-terraform apply
+`terraform apply`
 
 ### Step 5: Configure `kubectl` to Access the Cluster
-aws eks update-kubeconfig --region eu-north-1 --name BootCamp
+`aws eks update-kubeconfig --region eu-north-1 --name BootCamp`
 
 ### Step 6: Verify Cluster Connection
-kubectl get nodes
+`kubectl get nodes`
 
 ### Step 7: Deploy Helm Charts
-helm repo add stable https://charts.helm.sh/stable
-helm repo update
+`helm repo add stable https://charts.helm.sh/stable`
+`helm repo update`
 
 ### Step 8: Verify Helm Deployment
-helm list
+`helm list`
 
 ### Step 9: Configure IAM User Access to EKS
 Attach the necessary policies to allow user authentication:
-aws iam attach-user-policy --user-name MurathanErgin --policy-arn arn:aws:iam::aws:policy/AdministratorAccess
+`aws iam attach-user-policy --user-name MurathanErgin --policy-arn arn:aws:iam::aws:policy/AdministratorAccess`
 
 ### Step 10: Grant Kubernetes Access
 Modify the `aws-auth` ConfigMap to allow IAM user access:
-kubectl edit configmap aws-auth -n kube-system
+`kubectl edit configmap aws-auth -n kube-system`
 
 Add the following entry under `mapUsers`:
-mapUsers: |
+`mapUsers: |
   - userarn: arn:aws:iam::ACCOUNT_ID:user/MurathanErgin
     username: MurathanErgin
     groups:
-      - system:masters
+      - system:masters`
 
 ### Step 11: Validate IAM User Access
 Run the following command to ensure the IAM user has access:
-kubectl get nodes --as MurathanErgin
+`kubectl get nodes --as MurathanErgin`
 
 
 
