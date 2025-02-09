@@ -46,7 +46,7 @@ This project sets up an AWS EKS cluster using Terraform, with integration of Kub
 git clone (https://github.com/merginn/Bootcamp-Final-Exam/)
 
 ### Step 2: Initialize Terraform
-`shterraform init`
+`terraform init`
 
 ### Step 3: Plan the Deployment
 `terraform plan`
@@ -69,7 +69,7 @@ git clone (https://github.com/merginn/Bootcamp-Final-Exam/)
 
 ### Step 9: Configure IAM User Access to EKS
 Attach the necessary policies to allow user authentication:
-`aws iam attach-user-policy --user-name MurathanErgin --policy-arn arn:aws:iam::aws:policy/AdministratorAccess`
+`aws iam attach-user-policy --user-name <YourUserName> --policy-arn arn:aws:iam::aws:policy/AdministratorAccess`
 
 ### Step 10: Grant Kubernetes Access
 Modify the `aws-auth` ConfigMap to allow IAM user access:
@@ -77,14 +77,14 @@ Modify the `aws-auth` ConfigMap to allow IAM user access:
 
 Add the following entry under `mapUsers`:
 mapUsers: |
-  - userarn: arn:aws:iam::ACCOUNT_ID:user/MurathanErgin
-    username: MurathanErgin
+  - userarn: arn:aws:iam::ACCOUNT_ID:user/<YourUserName>
+    username: <YourUserName>
     groups:
       - system:masters
 
 ### Step 11: Validate IAM User Access
 Run the following command to ensure the IAM user has access:
-`kubectl get nodes --as MurathanErgin`
+`kubectl get nodes --as <YourUserName>`
 
 
 
